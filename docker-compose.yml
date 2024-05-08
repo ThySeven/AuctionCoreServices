@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   invoiceservice:
-    image: thyseven/invoiceservice:dev
+    image: thyseven/invoiceservice:latest
     ports:
       - "3005:8080"
     networks:
