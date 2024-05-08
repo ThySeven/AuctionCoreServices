@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  invoiceservice:
+    image: thyseven/invoiceservice:dev
+    ports:
+      - "3005:8080"
+    networks:
+      - default
+    environment:
+      - LokiEndpoint=http://loki:3100
+      - RabbitMQHostName=rabbitmq
+      - RabbitMQQueueName=invoices
+      - VAULT_IP=https://vault_dev:8201
+      - VAULT_SECRET=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc
+      - MongoDBConnectionString=mongodb://admin:1234@mongodb:27017
+
+
+networks:
+  default:
+    driver: bridge
+    name: 'mitnet'
+    external: true
