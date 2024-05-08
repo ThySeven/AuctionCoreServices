@@ -1,0 +1,66 @@
+version: '3.8'
+services:
+  loki:
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - default
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - default
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+
+  rabbitmq:
+    image: 'rabbitmq:management'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    hostname: rabbitmq
+    container_name: dev-rabbit
+
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+    ports:
+      - 27018:27017
+    networks:
+      - default
+    volumes:
+      - mongodb_data_container:/data/db
+
+  vault_dev: 
+    image: hashicorp/vault:latest
+    restart: on-failure:10
+    ports:
+      - "8201:8201"
+    environment:
+      VAULT_ADDR: 'https://0.0.0.0:8201/'
+      VAULT_LOCAL_CONFIG: '{"listener": [{"tcp":{"address": "0.0.0.0:8201", "tls_disable": "0", "tls_cert_file":"/data/cert.pem", "tls_key_file":"/data/key.pem"}}], "default_lease_ttl": "168h", "max_lease_ttl": "720h", "ui": true}'
+      VAULT_DEV_ROOT_TOKEN_ID: '1a2b3c4d-5e6f-7g8h-9i0j-123456789abc'
+      VAULT_TOKEN: 'abcdef12-3456-7890-abcd-ef1234567890'
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./vault-volume:/data
+    healthcheck:
+      retries: 5
+    command: 'server -dev -dev-root-token-id="1a2b3c4d-5e6f-7g8h-9i0j-123456789abc"'
+
+volumes:
+  mongodb_data_container:
+
+networks:
+  default:
+    driver: bridge
+    name: 'mitnet'
+

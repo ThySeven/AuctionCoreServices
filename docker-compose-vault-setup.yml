@@ -1,0 +1,16 @@
+version: '1.0'
+services:
+  vault_setup:
+    image: jeffstampe/vaultsetup:latest
+    environment:
+      - VAULT_IP=https://vault_dev:8201
+      - VAULT_SECRET=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc
+      - JWTSecret=ThySeven2023PaddingToEnsureLengthAndSecurity123456
+      - JWTIssuer=ThySevenIssuer
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+    name: 'mitnet'
