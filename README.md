@@ -13,11 +13,9 @@ To get your environment set up and the services running smoothly, please follow 
    `docker compose -f docker-compose-vault-setup.yml up && docker compose -f docker-compose-vault-setup.yml down`
   
 3. **Launch the Auction Core Services**  
-   To get the services for Team 1 and Team 2 up and running, use the command below, replacing `{id}` with `1` or `2` based on the team you're setting up for:  
+   To launch the Auction Core Services, run:  
    `docker compose -f docker-compose-auction-core-services.yml up -d`
   
-   Alternatively:
-   `docker compose -f docker-compose-team1.yml up -d && docker compose -f docker-compose-team2.yml up -d`
 
 4. **???**  
    ???.
