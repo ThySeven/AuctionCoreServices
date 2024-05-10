@@ -15,10 +15,13 @@ To get your environment set up and the services running smoothly, please follow 
 3. **Launch the Auction Core Services**  
    To launch the Auction Core Services, run:  
    `docker compose -f docker-compose-auction-core-services.yml up -d`
-  
 
-4. **???**  
+   **Alternatively**
+   To run all:
+   `docker compose -f docker-compose-auction-shared-services.yml up -d && docker compose -f docker-compose-vault-setup.yml up && docker compose -f docker-compose-vault-setup.yml down && docker compose -f docker-compose-auction-core-services.yml up -d`
+
+5. **???**  
    ???.
 
-5. **Profit**  
+6. **Profit**  
    With everything set up, it's time to see your project come to life and enjoy the fruits of your labor!
