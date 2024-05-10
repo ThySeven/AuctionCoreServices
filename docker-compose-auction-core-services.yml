@@ -27,7 +27,7 @@ services:
       - VAULT_IP=https://vault_dev:8201
       - VAULT_SECRET=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc
       - MongoDBConnectionString=mongodb://admin:1234@mongodb:27017
-      - GrafanaHostname=invoiceservice
+      - GrafanaHostname=mailservice
 
 
 networks:
