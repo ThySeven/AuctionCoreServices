@@ -7,13 +7,14 @@ services:
     networks:
       - default
     environment:
-      - LokiEndpoint=http://loki:3100
-      - RabbitMQHostName=rabbitmq
-      - RabbitMQQueueName=MailQueue
-      - VAULT_IP=https://vault_dev:8201
-      - VAULT_SECRET=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc
-      - MongoDBConnectionString=mongodb://admin:1234@mongodb:27017
+      - LokiEndpoint
+      - RabbitMQHostName
+      - VAULT_IP
+      - VAULT_SECRET
+      - MongoDBConnectionString
       - GrafanaHostname=invoiceservice
+      - RabbitMQQueueName=MailQueue
+
   mailservice:
     image: thyseven/mailservice:dev
     ports:
@@ -21,13 +22,14 @@ services:
     networks:
       - default
     environment:
-      - LokiEndpoint=http://loki:3100
-      - RabbitMQHostName=rabbitmq
-      - RabbitMQQueueName=MailQueue
-      - VAULT_IP=https://vault_dev:8201
-      - VAULT_SECRET=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc
-      - MongoDBConnectionString=mongodb://admin:1234@mongodb:27017
+      - LokiEndpoint
+      - RabbitMQHostName
+      - VAULT_IP
+      - VAULT_SECRET
+      - MongoDBConnectionString
       - GrafanaHostname=mailservice
+      - RabbitMQQueueName=MailQueue
+
 
 
 networks:
