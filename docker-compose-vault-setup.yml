@@ -3,8 +3,8 @@ services:
   vault_setup:
     image: thyseven/vaultinitializer:latest
     environment:
-      - VAULT_IP=https://vault_dev:8201
-      - VAULT_SECRET=1a2b3c4d-5e6f-7g8h-9i0j-123456789abc
+      - VAULT_IP
+      - VAULT_SECRET
       - JWTSecret=ThySeven2023PaddingToEnsureLengthAndSecurity123456
       - JWTIssuer=ThySevenIssuer
     networks:
