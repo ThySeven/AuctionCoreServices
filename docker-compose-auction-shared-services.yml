@@ -22,6 +22,7 @@ services:
     ports:
       - '5672:5672'
       - '15672:15672'
+      - '15692:15692'
     hostname: rabbitmq
     container_name: dev-rabbit
 

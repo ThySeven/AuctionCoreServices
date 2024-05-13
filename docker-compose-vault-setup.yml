@@ -1,6 +1,7 @@
 version: '1.0'
 services:
   vault_setup:
+    platform: linux/amd64
     image: thyseven/vaultinitializer:latest
     environment:
       - VAULT_IP
