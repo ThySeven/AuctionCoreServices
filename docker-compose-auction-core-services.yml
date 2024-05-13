@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   invoiceservice:
     platform: linux/amd64
@@ -32,9 +32,23 @@ services:
       - GrafanaHostname=mailservice
       - RabbitMQQueueName=MailQueue
 
-
+  userservice:
+    platform: linux/amd64
+    image: thyseven/userservice:dev
+    ports:
+      - "3015:8080"
+    networks:
+      - default
+    environment:
+      - LokiEndpoint
+      - RabbitMQHostName
+      - VAULT_IP
+      - VAULT_SECRET
+      - MongoDBConnectionString
+      - GrafanaHostname=userservice
+      - RabbitMQQueueName=MailQueue
 
 networks:
   default:
     driver: bridge
-    name: 'mitnet'
+    name: "mitnet"
