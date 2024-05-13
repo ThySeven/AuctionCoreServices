@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   invoiceservice:
+    platform: linux/amd64
     image: thyseven/invoiceservice:dev
     ports:
       - "3005:8080"
@@ -16,7 +17,8 @@ services:
       - RabbitMQQueueName=MailQueue
 
   mailservice:
-    image: thyseven/mailservice:dev
+    platform: linux/amd64
+    image: thyseven/mailservice:latest
     ports:
       - "3010:8080"
     networks:

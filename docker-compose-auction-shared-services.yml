@@ -53,12 +53,27 @@ services:
       - IPC_LOCK
     volumes:
       - ./vault-volume:/data
+    networks:
+      - default
     healthcheck:
       retries: 5
     command: 'server -dev -dev-root-token-id="1a2b3c4d-5e6f-7g8h-9i0j-123456789abc"'
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - prometheus_data:/prometheus
+    expose:
+      - 9090
+    networks:
+      - default
+
 volumes:
   mongodb_data_container:
+  prometheus_data:
+
 
 networks:
   default:
