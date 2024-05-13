@@ -70,11 +70,22 @@ services:
     networks:
       - default
 
+  # mongodb-exporter:
+  #   image: xendera/mongodb-exporter
+  #   container_name: mongodb-exporter
+  #   hostname: mongodb-exporter
+  #   ports:
+  #     - 9216:9216
+  #   environment:
+  #     - MONGODB_URL${MongoDBConnectionString}
+
   mongodb_exporter:
-    image: percona/mongodb_exporter:latest
-    command: sh -c "--mongodb.uri=$$MongoDBConnectionString"
+    image: percona/mongodb_exporter:0.40
+    command: --mongodb.uri=${MongoDBConnectionString}
+    ports:
+      - 9216:9216
     networks:
-      default
+      - default # or any other network like 'mitnet'
 
 
 volumes:
