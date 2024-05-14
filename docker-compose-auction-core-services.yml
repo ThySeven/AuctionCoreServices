@@ -15,10 +15,11 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=invoiceservice
       - RabbitMQQueueName=MailQueue
+    restart: unless-stopped
 
   mailservice:
     platform: linux/amd64
-    image: thyseven/mailservice:latest
+    image: thyseven/mailservice:dev
     ports:
       - "3010:8080"
     networks:
@@ -31,6 +32,7 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=mailservice
       - RabbitMQQueueName=MailQueue
+    restart: unless-stopped
 
   userservice:
     platform: linux/amd64
@@ -47,6 +49,44 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=userservice
       - RabbitMQQueueName=MailQueue
+    restart: unless-stopped
+
+  biddingservice:
+    platform: linux/amd64
+    image: thyseven/biddingservice:latest
+    ports:
+      - "3020:8080"
+    networks:
+      - default
+    environment:
+      - LokiEndpoint
+      - RabbitMQHostName
+      - VAULT_IP
+      - VAULT_SECRET
+      - MongoDBConnectionString
+      - GrafanaHostname=biddingservice
+      - RabbitMQQueueName=MailQueue
+      - BiddingQueueName=BiddingQueue
+    restart: unless-stopped
+  
+  lotservice:
+    platform: linux/amd64
+    image: thyseven/lotservice:dev
+    ports:
+     - "3025:8080"
+    environment:
+      - LokiEndpoint
+      - RabbitMQHostName
+      - VAULT_IP
+      - VAULT_SECRET
+      - MongoDBConnectionString
+      - GrafanaHostname=lotservice
+      - RabbitMQQueueName=BiddingQueue
+      - UserServiceEndpoint=userservice
+      - InvoiceServiceEndpoint=invoiceservice
+      - BiddingServiceEndpoint=biddingservice
+      - PublicIP=localhost
+    restart: unless-stopped
 
 networks:
   default:

@@ -42,6 +42,7 @@ services:
   vault_dev: 
     image: hashicorp/vault:latest
     restart: on-failure:10
+    hostname: vault_dev
     ports:
       - "8201:8201"
     environment:
@@ -70,20 +71,14 @@ services:
     networks:
       - default
 
-  # mongodb-exporter:
-  #   image: xendera/mongodb-exporter
-  #   container_name: mongodb-exporter
-  #   hostname: mongodb-exporter
-  #   ports:
-  #     - 9216:9216
-  #   environment:
-  #     - MONGODB_URL${MongoDBConnectionString}
-
-  mongodb_exporter:
-    image: percona/mongodb_exporter:0.40
-    command: --mongodb.uri=${MongoDBConnectionString}
-    ports:
-      - 9216:9216
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose: 
+      - 8080
+    command: --interval 60
     networks:
       - default # or any other network like 'mitnet'
 
