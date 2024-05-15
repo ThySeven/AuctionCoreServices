@@ -82,9 +82,9 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=lotservice
       - RabbitMQQueueName=BiddingQueue
-      - UserServiceEndpoint=userservice
-      - InvoiceServiceEndpoint=invoiceservice
-      - BiddingServiceEndpoint=biddingservice
+      - UserServiceEndpoint=userservice:8080
+      - InvoiceServiceEndpoint=invoiceservice:8080
+      - BiddingServiceEndpoint=biddingservice:8080
       - PublicIP=localhost
     restart: unless-stopped
 
