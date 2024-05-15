@@ -4,13 +4,14 @@ services:
     platform: linux/amd64
     image: thyseven/vaultinitializer:latest
     environment:
+      - LokiEndpoint
       - VAULT_IP
       - VAULT_SECRET
       - JWTSecret=ThySeven2023PaddingToEnsureLengthAndSecurity123456
       - JWTIssuer=ThySevenIssuer
+      - GrafanaHostname=vaultinitializer
     networks:
       - default
-
 networks:
   default:
     driver: bridge

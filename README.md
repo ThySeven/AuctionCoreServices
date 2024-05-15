@@ -19,7 +19,7 @@ To get your environment set up and the services running smoothly, please follow 
    **Alternatively**
    
    To run all:
-   `docker compose -f docker-compose-auction-shared-services.yml up -d && sleep 2 && docker compose -f docker-compose-vault-setup.yml up && sleep 2 && docker compose -f docker-compose-vault-setup.yml down && sleep 4 && docker compose -f docker-compose-auction-core-services.yml up -d`
+   `docker compose -f docker-compose-auction-shared-services.yml up -d && docker compose -f docker-compose-vault-setup.yml up && docker compose -f docker-compose-vault-setup.yml down && docker compose -f docker-compose-auction-core-services.yml up -d`
 
 5. **???**  
    ???.

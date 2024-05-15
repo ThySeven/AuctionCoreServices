@@ -7,6 +7,7 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     networks:
       - default
+    restart: unless-stopped
 
   grafana:
     image: grafana/grafana:latest
@@ -16,6 +17,7 @@ services:
       - default
     volumes:
       - ./grafana-data:/var/lib/grafana
+    restart: unless-stopped
 
   rabbitmq:
     image: 'rabbitmq:management'
@@ -25,6 +27,7 @@ services:
       - '15692:15692'
     hostname: rabbitmq
     container_name: dev-rabbit
+    restart: unless-stopped
 
 
   mongodb:
@@ -38,6 +41,7 @@ services:
       - default
     volumes:
       - mongodb_data_container:/data/db
+    restart: unless-stopped
 
   vault_dev: 
     image: hashicorp/vault:latest
@@ -78,6 +82,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     expose: 
       - 8080
+    restart: unless-stopped
     command: --interval 60
     networks:
       - default # or any other network like 'mitnet'
