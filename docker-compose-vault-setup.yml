@@ -12,6 +12,7 @@ services:
       - GrafanaHostname=vaultinitializer
     networks:
       - default
+
 networks:
   default:
     driver: bridge
