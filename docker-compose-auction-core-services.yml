@@ -16,6 +16,11 @@ services:
       - GrafanaHostname=invoiceservice
       - RabbitMQQueueName=MailQueue
     restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: any         # Restart under any failure condition
+        delay: 10s              # Wait 5 seconds before restarting
+
 
   mailservice:
     platform: linux/amd64
@@ -33,6 +38,10 @@ services:
       - GrafanaHostname=mailservice
       - RabbitMQQueueName=MailQueue
     restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: any         # Restart under any failure condition
+        delay: 10s              # Wait 5 seconds before restarting
 
   userservice:
     platform: linux/amd64
@@ -50,6 +59,10 @@ services:
       - GrafanaHostname=userservice
       - RabbitMQQueueName=MailQueue
     restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: any         # Restart under any failure condition
+        delay: 10s              # Wait 5 seconds before restarting
 
   biddingservice:
     platform: linux/amd64
@@ -68,7 +81,11 @@ services:
       - RabbitMQQueueName=MailQueue
       - BiddingQueueName=BiddingQueue
     restart: unless-stopped
-  
+    deploy:
+      restart_policy:
+        condition: any         # Restart under any failure condition
+        delay: 10s              # Wait 5 seconds before restarting
+
   lotservice:
     platform: linux/amd64
     image: thyseven/lotservice:dev
@@ -87,6 +104,10 @@ services:
       - BiddingServiceEndpoint=biddingservice:8080
       - PublicIP=localhost
     restart: unless-stopped
+    deploy:
+      restart_policy:
+        condition: any         # Restart under any failure condition
+        delay: 10s              # Wait 5 seconds before restarting
 
 networks:
   default:
