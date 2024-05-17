@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Bicep-scripts"
   ],
+  "SelectedNode": "\\Bicep-scripts\\setupGO.bicep",
   "PreviewInSolutionExplorer": false
 }
