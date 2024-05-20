@@ -22,10 +22,13 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' existing 
 // --- Create the DevOps container group ---
 @description('auktionsHuset DevOps Container Group')
 resource auktionsHusetDevOpsGroup 'Microsoft.ContainerInstance/containerGroups@2023-05-01' = {
+
   name: 'auktionsHusetDevOpsGroup'
   location: location
+
   properties: {
     sku: 'Standard'
+
     containers: [
       {
         name: 'loki'

@@ -242,6 +242,3 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
     network
   ]
 }
-
-
-
