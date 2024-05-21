@@ -83,7 +83,7 @@ services:
     expose: 
       - 8080
     restart: unless-stopped
-    command: --interval 60
+    command: --interval 360
     networks:
       - default # or any other network like 'mitnet'
 
