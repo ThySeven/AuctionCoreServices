@@ -4,7 +4,7 @@ services:
     platform: linux/amd64
     image: thyseven/invoiceservice:dev
     ports:
-      - "3005:8080"
+      - "3005:3005"
     networks:
       - default
     environment:
@@ -16,6 +16,7 @@ services:
       - GrafanaHostname=invoiceservice
       - RabbitMQQueueName=MailQueue
       - PublicIP=http://localhost:3005
+      - ASPNETCORE_URLS=http://localhost:3005
     restart: unless-stopped
     deploy:
       restart_policy:
@@ -27,7 +28,7 @@ services:
     platform: linux/amd64
     image: thyseven/mailservice:dev
     ports:
-      - "3010:8080"
+      - "3010:3010"
     networks:
       - default
     environment:
@@ -38,6 +39,7 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=mailservice
       - RabbitMQQueueName=MailQueue
+      - ASPNETCORE_URLS=http://localhost:3010
     restart: unless-stopped
     deploy:
       restart_policy:
@@ -48,7 +50,7 @@ services:
     platform: linux/amd64
     image: thyseven/userservice:dev
     ports:
-      - "3015:8080"
+      - "3015:3015"
     networks:
       - default
     environment:
@@ -59,6 +61,7 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=userservice
       - RabbitMQQueueName=MailQueue
+      - ASPNETCORE_URLS=http://localhost:3015
     restart: unless-stopped
     deploy:
       restart_policy:
@@ -69,7 +72,7 @@ services:
     platform: linux/amd64
     image: thyseven/biddingservice:latest
     ports:
-      - "3020:8080"
+      - "3020:3020"
     networks:
       - default
     environment:
@@ -81,6 +84,7 @@ services:
       - GrafanaHostname=biddingservice
       - RabbitMQQueueName=MailQueue
       - BiddingQueueName=BiddingQueue
+      - ASPNETCORE_URLS=http://localhost:3020
     restart: unless-stopped
     deploy:
       restart_policy:
@@ -91,7 +95,7 @@ services:
     platform: linux/amd64
     image: thyseven/lotservice:dev
     ports:
-     - "3025:8080"
+     - "3025:3025"
     environment:
       - LokiEndpoint
       - RabbitMQHostName
@@ -104,6 +108,7 @@ services:
       - InvoiceServiceEndpoint=invoiceservice:8080
       - BiddingServiceEndpoint=biddingservice:8080
       - PublicIP=http://localhost:3025
+      - ASPNETCORE_URLS=http://localhost:3025
     restart: unless-stopped
     deploy:
       restart_policy:
