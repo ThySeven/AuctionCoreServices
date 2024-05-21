@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json",
     "title": "BidModel",
     "type": "object",
     "properties": {
