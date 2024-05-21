@@ -1,6 +1,5 @@
 @description('Location for all resources.')
 param location string = resourceGroup().location
-
 param vnetname string = 'goauctionsVNet'
 param subnetName string = 'goDevopsSubnet'
 param storageAccountName string = 'storageAccount'
@@ -78,7 +77,7 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
           resources: {
             requests: {
               memoryInGB: json('1.0')
-              cpu: json('1.0')
+              cpu: json('0.5')
             }
           }
           volumeMounts: [

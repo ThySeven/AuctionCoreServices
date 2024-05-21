@@ -16,7 +16,7 @@ var applicationGateWayName = 'goauctionsAppGateway'
 var dnszonename = 'auktionshuset.dk'
 
 @description('Public Domain name used when accessing gateway from internet')
-var publicDomainName = 'auktionshusetgo'
+var publicDomainName = 'gronogolsenpunktumdk'
 
 @description('List of file shares to create')
 var shareNames = [
@@ -68,6 +68,19 @@ module backend 'backendGO.bicep' = {
     vnetname: virtualNetworkName
     subnetName: 'goBackendSubnet'
     dnsRecordName: 'BACKEND'
+    dnszonename: dnszonename
+    storageAccountName: storage.outputs.storageAcountName
+  }
+}
+
+
+module services 'servicesGO.bicep' = {
+  name: 'servicesModule'
+  params: {
+    location: location
+    vnetname: virtualNetworkName
+    subnetName: 'goservicesSubnet'
+    dnsRecordName: 'services'
     dnszonename: dnszonename
     storageAccountName: storage.outputs.storageAcountName
   }
