@@ -104,9 +104,9 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=lotservice
       - RabbitMQQueueName=BiddingQueue
-      - UserServiceEndpoint=userservice:8080
-      - InvoiceServiceEndpoint=invoiceservice:8080
-      - BiddingServiceEndpoint=biddingservice:8080
+      - UserServiceEndpoint=userservice:3015
+      - InvoiceServiceEndpoint=invoiceservice:3005
+      - BiddingServiceEndpoint=biddingservice:3020
       - PublicIP=http://localhost:3025
       - ASPNETCORE_URLS=http://localhost:3025
     restart: unless-stopped
