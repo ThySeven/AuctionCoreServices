@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "PaymentModel",
+    "type": "object",
+    "properties": {
+      "Price": {
+        "type": "number"
+      },
+      "CurrencyCode": {
+        "type": "string"
+      },
+      "InvoiceNumber": {
+        "type": "string"
+      },
+      "Reference": {
+        "type": "string"
+      },
+      "InvoiceDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "Note": {
+        "type": "string"
+      },
+      "Term": {
+        "type": "string"
+      },
+      "Memo": {
+        "type": "string"
+      }
+    },
+    "required": ["Price", "CurrencyCode", "InvoiceNumber", "Reference", "InvoiceDate", "Note", "Term", "Memo"]
+  }

@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "NotificationModel",
+    "type": "object",
+    "properties": {
+      "LotId": {
+        "type": "string"
+      },
+      "RecieverMail": {
+        "type": "string"
+      },
+      "BidTime": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "LotName": {
+        "type": "string"
+      },
+      "NewLotPrice": {
+        "type": "integer"
+      },
+      "NewBidLink": {
+        "type": "string"
+      }
+    },
+    "required": ["LotId", "RecieverMail", "BidTime", "LotName", "NewLotPrice", "NewBidLink"]
+  }

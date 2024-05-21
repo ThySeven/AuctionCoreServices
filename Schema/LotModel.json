@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LotModel",
+    "type": "object",
+    "properties": {
+      "LotId": {
+        "type": "string"
+      },
+      "bids": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/BidModel"
+        }
+      },
+      "LotName": {
+        "type": "string"
+      },
+      "Location": {
+        "type": "string"
+      },
+      "OnlineAuction": {
+        "type": "boolean"
+      },
+      "StartingPrice": {
+        "type": "integer"
+      },
+      "MinimumBid": {
+        "type": "integer"
+      },
+      "Open": {
+        "type": "boolean"
+      },
+      "LotCreationTime": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "LotEndTime": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "required": ["LotId", "bids", "LotName", "Location", "OnlineAuction", "StartingPrice", "MinimumBid", "Open", "LotCreationTime", "LotEndTime"],
+    "definitions": {
+      "BidModel": {
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "type": "integer"
+          },
+          "LotId": {
+            "type": "string"
+          },
+          "BidderId": {
+            "type": "string"
+          },
+          "Time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["Amount", "LotId", "BidderId", "Time"]
+      }
+    }
+  }

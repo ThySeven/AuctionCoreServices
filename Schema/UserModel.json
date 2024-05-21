@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UserModel",
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "string"
+      },
+      "FirstName": {
+        "type": "string"
+      },
+      "LastName": {
+        "type": "string"
+      },
+      "Email": {
+        "type": "string"
+      },
+      "Username": {
+        "type": "string"
+      },
+      "Password": {
+        "type": "string"
+      },
+      "Salt": {
+        "type": "string"
+      },
+      "Address": {
+        "type": "string"
+      },
+      "PhoneNumber": {
+        "type": "string"
+      },
+      "Verified": {
+        "type": "boolean"
+      },
+      "UserType": {
+        "type": "string"
+      }
+    },
+    "required": ["Id", "FirstName", "LastName", "Email", "Username", "Password", "Address", "PhoneNumber", "Verified", "UserType"]
+  }

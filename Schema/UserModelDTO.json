@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UserModelDTO",
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "string"
+      },
+      "FirstName": {
+        "type": "string"
+      },
+      "LastName": {
+        "type": "string"
+      },
+      "Email": {
+        "type": "string"
+      },
+      "Username": {
+        "type": "string"
+      },
+      "Address": {
+        "type": "string"
+      },
+      "PhoneNumber": {
+        "type": "string"
+      },
+      "UserType": {
+        "type": "string"
+      }
+    },
+    "required": ["Id", "FirstName", "LastName", "Email", "Username", "Address", "PhoneNumber", "UserType"]
+  }

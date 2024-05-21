@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ParcelModel",
+    "type": "object",
+    "properties": {
+      "Weight": {
+        "type": "number"
+      },
+      "Reference": {
+        "type": "string"
+      },
+      "Comment": {
+        "type": "string"
+      },
+      "CashService": {
+        "type": "number"
+      },
+      "AddOnLiabilityService": {
+        "type": "number"
+      },
+      "WeightCategory": {
+        "type": "string"
+      },
+      "Height": {
+        "type": "number"
+      },
+      "Width": {
+        "type": "number"
+      },
+      "Length": {
+        "type": "number"
+      }
+    },
+    "required": ["Weight", "Reference", "Comment", "CashService", "AddOnLiabilityService", "WeightCategory", "Height", "Width", "Length"]
+  }
