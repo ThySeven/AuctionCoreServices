@@ -107,6 +107,7 @@ services:
       - UserServiceEndpoint=userservice:3015
       - InvoiceServiceEndpoint=invoiceservice:3005
       - BiddingServiceEndpoint=biddingservice:3020
+      - NginxEndpoint=nginx:3001
       - PublicIP=http://localhost:3025
       - ASPNETCORE_URLS=http://+:3025
     restart: unless-stopped
@@ -129,6 +130,7 @@ services:
       - "3001:3001"
       networks:
       - default
+      restart: unless-stopped
 
 networks:
   default:
