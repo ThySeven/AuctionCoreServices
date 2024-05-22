@@ -6,7 +6,6 @@ param storageAccountName string = 'storageAccount'
 param dnsRecordName string ='backendhostname'
 param dnszonename string='thednszonename.dk'
 
-
 // --- Get a reference to our existing Virtual Network ---
 resource VNET 'Microsoft.Network/virtualNetworks@2020-11-01' existing = {
   name: vnetname
@@ -43,9 +42,7 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
               port: 27017
             }
           ]
-          environmentVariables: [
-            
-          ]
+          environmentVariables: []
           resources: {
             requests: {
               memoryInGB: json('1.0')
@@ -88,6 +85,60 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
           ]
         }
       }
+      {
+        name: 'vault'
+        properties: {
+          image: 'hashicorp/vault:latest'
+          command: ['vault', 'server', '-config=/vault/config/config.hcl']
+          ports: [
+            {
+              port: 8201
+            }
+          ]
+          environmentVariables: [
+            {
+              name: 'VAULT_TOKEN'
+              value: 'abcdef12-3456-7890-abcd-ef1234567890'
+            }
+            {
+              name: 'VAULT_ADDR'
+              value: 'https://0.0.0.0:8201/'
+            }
+            {
+              name: 'VAULT_LOCAL_CONFIG'
+              value: '{"listener": [{"tcp":{"address": "0.0.0.0:8201", "tls_disable": "0", "tls_cert_file":"/data/cert.pem", "tls_key_file":"/data/key.pem"}}], "default_lease_ttl": "168h", "max_lease_ttl": "720h", "ui": true}'
+            }
+            {
+              name: 'VAULT_DEV_ROOT_TOKEN_ID'
+              value: '1a2b3c4d-5e6f-7g8h-9i0j-123456789abc'
+            }
+            {
+              name: 'PATH'
+              value: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+            }
+            {
+              name: 'NAME'
+              value: 'vault'
+            }
+            {
+              name: 'VERSION'
+              value: ''
+            }
+          ]
+          resources: {
+            requests: {
+              memoryInGB: json('1.0')
+              cpu: json('0.5')
+            }
+          }
+          volumeMounts: [
+            {
+              name: 'vault-config'
+              mountPath: '/vault/config'
+            }
+          ]
+        }
+      }
     ]
     initContainers: []
     restartPolicy: 'Always'
@@ -101,6 +152,9 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
         }
         {
           port: 5672
+        }
+        {
+          port: 8201
         }
       ]
       ip: '10.0.1.4'
@@ -124,6 +178,14 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
           storageAccountKey: storageAccount.listKeys().keys[0].value
         }
       }
+      {
+        name: 'vault-config'
+        azureFile: {
+          shareName: 'vaultconfig'
+          storageAccountName: storageAccount.name
+          storageAccountKey: storageAccount.listKeys().keys[0].value
+        }
+      }
     ]
     subnetIds: [
       {
@@ -138,9 +200,7 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
       searchDomains: dnszonename
     }
   }
-
 }
-
 
 // --- Get a reference to the existing DNS Zone ---
 resource dnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' existing = {
@@ -161,4 +221,5 @@ resource dnsRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
   }
 }
 
-output containerIPAddressFqdn string = auktionsHusetBackendGroup.properties.ipAddress.ip
+output containerIPAddressFqdn string = auktionsHusetBackendGroup.properties.ipAddress.ip 
+
