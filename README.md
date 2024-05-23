@@ -28,7 +28,7 @@ To get your environment set up and the services running smoothly, please follow 
    With everything set up, it's time to see your project come to life and enjoy the fruits of your labor!
 
 
-##Architecture:
+## Architecture:
 ![image](https://github.com/ThySeven/AuctionCoreServices/assets/9445207/27954d72-4d8c-40cc-87cd-cd5011629d32)
 ![image](https://github.com/ThySeven/AuctionCoreServices/assets/9445207/c95309e5-9a79-4198-8e18-1e986b1b7998)
 ![image](https://github.com/ThySeven/AuctionCoreServices/assets/9445207/9cdecce1-d814-4198-aa5e-282737123dce)
