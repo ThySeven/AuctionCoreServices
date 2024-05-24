@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  vault_setup:
+    platform: linux/amd64
+    image: thyseven/gronogolsentestingfrontend:latest
+    environment:
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+    name: 'mitnet'
