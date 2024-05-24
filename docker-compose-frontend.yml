@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  vault_setup:
+  gronogolsentestingfrontend:
     platform: linux/amd64
     image: thyseven/gronogolsentestingfrontend:latest
     environment:
