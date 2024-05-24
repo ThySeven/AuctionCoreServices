@@ -3,6 +3,8 @@ services:
   gronogolsentestingfrontend:
     platform: linux/amd64
     image: thyseven/gronogolsentestingfrontend:latest
+    ports:
+    - "3030:80"
     networks:
       - default
 
