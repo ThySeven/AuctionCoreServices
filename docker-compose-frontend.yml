@@ -3,7 +3,6 @@ services:
   gronogolsentestingfrontend:
     platform: linux/amd64
     image: thyseven/gronogolsentestingfrontend:latest
-    environment:
     networks:
       - default
 
