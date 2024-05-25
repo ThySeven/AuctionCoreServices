@@ -13,7 +13,7 @@ var publicIPAddressName = 'goauctions-public_ip'
 var applicationGateWayName = 'goauctionsAppGateway'
 
 @description('Name of the DNS zone')
-var dnszonename = 'auktionshuset.dk'
+var dnszonename = 'gronogolsenpunktum.dk'
 
 @description('Public Domain name used when accessing gateway from internet')
 var publicDomainName = 'gronogolsenpunktumdk'
@@ -25,6 +25,8 @@ var shareNames = [
   'images'
   'queue'
   'grafana'
+  'vault'
+
 ]
 
 // --- Call Bicep submodules ------------------------------
@@ -86,8 +88,6 @@ module services 'servicesGO.bicep' = {
   }
 }
 
-// --- Create the Application Gateway  ------------------------------
-
 resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' = {
   name: applicationGateWayName
   location: location
@@ -130,6 +130,39 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
           port: 15672
         }
       }
+       {
+        name: 'invoiceFrontPort'
+        properties: {
+            port: 3005
+            }
+        }
+       {
+        name: 'userFrontPort'
+        properties: {
+            port: 3015
+            }
+        }
+
+        {
+        name: 'mailFrontPort'
+        properties: {
+            port: 3010
+            }
+        }
+
+        {
+        name: 'biddingFrontPort'
+        properties: {
+            port: 3020
+            }
+        }
+
+        {
+        name: 'lotFrontPort'
+        properties: {
+            port: 3025
+            }
+        }
     ]
     backendAddressPools: [
       {
@@ -148,6 +181,16 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
           backendAddresses: [
             {
               ipAddress: devops.outputs.containerIPAddressFqdn
+            }
+          ]
+        }
+      }
+      {
+        name: 'goAuctionsServicesPool'
+        properties: {
+          backendAddresses: [
+            {
+              ipAddress: services.outputs.containerIPAddressFqdn
             }
           ]
         }
@@ -182,6 +225,77 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
           requestTimeout: 30
         }
       }
+      {
+        name: 'invoiceSettings'
+        properties: {
+            port: 3005
+            protocol: 'Http'
+            cookieBasedAffinity: 'Disabled'
+            connectionDraining: {
+            enabled: false
+            drainTimeoutInSec: 1
+            }
+            pickHostNameFromBackendAddress: false
+            requestTimeout: 30
+        }
+      }
+      {
+        name: 'userSettings'
+        properties: {
+          port: 3015
+          protocol: 'Http'
+          cookieBasedAffinity: 'Disabled'
+          connectionDraining: {
+            enabled: false
+            drainTimeoutInSec: 1
+          }
+          pickHostNameFromBackendAddress: false
+          requestTimeout: 30
+        }
+      }
+      {
+        name: 'mailSettings'
+        properties: {
+          port: 3010
+          protocol: 'Http'
+          cookieBasedAffinity: 'Disabled'
+          connectionDraining: {
+            enabled: false
+            drainTimeoutInSec: 1
+          }
+          pickHostNameFromBackendAddress: false
+          requestTimeout: 30
+        }
+      }
+       {
+        name: 'biddingSettings'
+        properties: {
+          port: 3020
+          protocol: 'Http'
+          cookieBasedAffinity: 'Disabled'
+          connectionDraining: {
+            enabled: false
+            drainTimeoutInSec: 1
+          }
+          pickHostNameFromBackendAddress: false
+          requestTimeout: 30
+        }
+      }
+       {
+        name: 'lotSettings'
+        properties: {
+          port: 3025
+          protocol: 'Http'
+          cookieBasedAffinity: 'Disabled'
+          connectionDraining: {
+            enabled: false
+            drainTimeoutInSec: 1
+          }
+          pickHostNameFromBackendAddress: false
+          requestTimeout: 30
+        }
+      }
+
     ]
     httpListeners: [
       {
@@ -205,6 +319,73 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
           }
           frontendPort: {
             id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateWayName, 'rabbitmqPort')
+          }
+          protocol: 'Http'
+          requireServerNameIndication: false
+        }
+      }
+
+
+       {
+        name: 'invoiceHttpListener'
+        properties: {
+          frontendIPConfiguration: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', applicationGateWayName, 'appGwPublicFrontendIp')
+          }
+          frontendPort: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateWayName, 'invoiceFrontPort')
+          }
+          protocol: 'Http'
+          requireServerNameIndication: false
+        }
+      }
+       {
+        name: 'userHttpListener'
+        properties: {
+          frontendIPConfiguration: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', applicationGateWayName, 'appGwPublicFrontendIp')
+          }
+          frontendPort: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateWayName, 'userFrontPort')
+          }
+          protocol: 'Http'
+          requireServerNameIndication: false
+        }
+      }
+       {
+        name: 'mailHttpListener'
+        properties: {
+          frontendIPConfiguration: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', applicationGateWayName, 'appGwPublicFrontendIp')
+          }
+          frontendPort: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateWayName, 'mailFrontPort')
+          }
+          protocol: 'Http'
+          requireServerNameIndication: false
+        }
+      }
+       {
+        name: 'biddingHttpListener'
+        properties: {
+          frontendIPConfiguration: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', applicationGateWayName, 'appGwPublicFrontendIp')
+          }
+          frontendPort: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateWayName, 'biddingFrontPort')
+          }
+          protocol: 'Http'
+          requireServerNameIndication: false
+        }
+      }
+       {
+        name: 'lotHttpListener'
+        properties: {
+          frontendIPConfiguration: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', applicationGateWayName, 'appGwPublicFrontendIp')
+          }
+          frontendPort: {
+            id: resourceId('Microsoft.Network/applicationGateways/frontendPorts', applicationGateWayName, 'lotFrontPort')
           }
           protocol: 'Http'
           requireServerNameIndication: false
@@ -244,6 +425,93 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
           }
         }
       }
+
+      {
+        name: 'invoiceRule'
+        properties: {
+          ruleType: 'Basic'
+          priority: 10000
+          httpListener: {
+            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', applicationGateWayName, 'invoiceHttpListener')
+          }
+          backendAddressPool: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateWayName, 'goAuctionsServicesPool')
+          }
+          backendHttpSettings: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', applicationGateWayName, 'invoiceSettings')
+          }
+        }
+      }
+
+      {
+        name: 'userRule'
+        properties: {
+          ruleType: 'Basic'
+          priority: 9000
+          httpListener: {
+            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', applicationGateWayName, 'userHttpListener')
+          }
+          backendAddressPool: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateWayName, 'goAuctionsServicesPool')
+          }
+          backendHttpSettings: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', applicationGateWayName, 'userSettings')
+          }
+        }
+      }
+
+
+      {
+        name: 'mailRule'
+        properties: {
+          ruleType: 'Basic'
+          priority: 8000
+          httpListener: {
+            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', applicationGateWayName, 'mailHttpListener')
+          }
+          backendAddressPool: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateWayName, 'goAuctionsServicesPool')
+          }
+          backendHttpSettings: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', applicationGateWayName, 'mailSettings')
+          }
+        }
+      }
+
+      {
+        name: 'biddingRule'
+        properties: {
+          ruleType: 'Basic'
+          priority: 7000
+          httpListener: {
+            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', applicationGateWayName, 'biddingHttpListener')
+          }
+          backendAddressPool: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateWayName, 'goAuctionsServicesPool')
+          }
+          backendHttpSettings: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', applicationGateWayName, 'biddingSettings')
+          }
+        }
+      }
+
+      {
+        name: 'lotRule'
+        properties: {
+          ruleType: 'Basic'
+          priority: 6000
+          httpListener: {
+            id: resourceId('Microsoft.Network/applicationGateways/httpListeners', applicationGateWayName, 'lotHttpListener')
+          }
+          backendAddressPool: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendAddressPools', applicationGateWayName, 'goAuctionsServicesPool')
+          }
+          backendHttpSettings: {
+            id: resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', applicationGateWayName, 'lotSettings')
+          }
+        }
+      }
+      
     ]
     enableHttp2: false
     autoscaleConfiguration: {
@@ -255,7 +523,6 @@ resource applicationGateWay 'Microsoft.Network/applicationGateways@2022-11-01' =
     network
   ]
 }
+
 output vaultIp string = backend.outputs.containerIPAddressFqdn
-
-
          

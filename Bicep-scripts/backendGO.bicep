@@ -26,7 +26,7 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
   location: location
   properties: {
     sku: 'Standard'
-    containers: [
+    containers: [   
       {
         name: 'mongodb'
         properties: {
@@ -133,7 +133,7 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
           }
           volumeMounts: [
             {
-              name: 'vault-config'
+              name: 'vaultconfig'
               mountPath: '/vault/config'
             }
           ]
@@ -154,7 +154,7 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
           port: 5672
         }
         {
-          port: 8201
+           port: 8201
         }
       ]
       ip: '10.0.1.4'
@@ -172,18 +172,18 @@ resource auktionsHusetBackendGroup 'Microsoft.ContainerInstance/containerGroups@
       }
       {
         name: 'msgqueue'
-        azureFile: {
-          shareName: 'storagequeue'
-          storageAccountName: storageAccount.name
-          storageAccountKey: storageAccount.listKeys().keys[0].value
+        azurefile: {
+          sharename: 'storagequeue'
+          storageaccountname: storageAccount.name
+          storageaccountkey: storageAccount.listkeys().keys[0].value
         }
       }
       {
-        name: 'vault-config'
-        azureFile: {
-          shareName: 'vaultconfig'
-          storageAccountName: storageAccount.name
-          storageAccountKey: storageAccount.listKeys().keys[0].value
+        name: 'vaultconfig'
+        azurefile: {
+          sharename: 'storagevault'
+          storageaccountname: storageAccount.name
+          storageaccountkey: storageAccount.listkeys().keys[0].value
         }
       }
     ]
@@ -222,4 +222,3 @@ resource dnsRecord 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
 }
 
 output containerIPAddressFqdn string = auktionsHusetBackendGroup.properties.ipAddress.ip 
-
