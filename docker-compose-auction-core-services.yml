@@ -4,6 +4,7 @@ services:
     platform: linux/amd64
     image: thyseven/invoiceservice:dev
     hostname: invoiceservice
+    container_name: invoiceservice
     ports:
       - "3005:3005"
     networks:
@@ -29,6 +30,7 @@ services:
     platform: linux/amd64
     image: thyseven/mailservice:dev
     hostname: mailservice
+    container_name: mailservice
     ports:
       - "3010:3010"
     networks:
@@ -52,6 +54,7 @@ services:
     platform: linux/amd64
     image: thyseven/userservice:dev
     hostname: userservice
+    container_name: userservice
     ports:
       - "3015:3015"
     networks:
@@ -75,6 +78,7 @@ services:
     platform: linux/amd64
     image: thyseven/biddingservice:latest
     hostname: biddingservice
+    container_name: biddingservice
     ports:
       - "3020:3020"
     networks:
@@ -99,6 +103,7 @@ services:
     platform: linux/amd64
     image: thyseven/lotservice:dev
     hostname: lotservice
+    container_name: lotservice
     ports:
      - "3025:3025"
     environment:
