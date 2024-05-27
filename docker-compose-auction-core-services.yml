@@ -3,6 +3,7 @@ services:
   invoiceservice:
     platform: linux/amd64
     image: thyseven/invoiceservice:dev
+    hostname: invoiceservice
     ports:
       - "3005:3005"
     networks:
@@ -15,7 +16,7 @@ services:
       - MongoDBConnectionString
       - GrafanaHostname=invoiceservice
       - RabbitMQQueueName=MailQueue
-      - PublicIP=http://localhost:3005
+      - PublicIP=https://api.gronogolsen.dk
       - ASPNETCORE_URLS=http://+:3005
     restart: unless-stopped
     deploy:
@@ -27,6 +28,7 @@ services:
   mailservice:
     platform: linux/amd64
     image: thyseven/mailservice:dev
+    hostname: mailservice
     ports:
       - "3010:3010"
     networks:
@@ -49,6 +51,7 @@ services:
   userservice:
     platform: linux/amd64
     image: thyseven/userservice:dev
+    hostname: userservice
     ports:
       - "3015:3015"
     networks:
@@ -71,6 +74,7 @@ services:
   biddingservice:
     platform: linux/amd64
     image: thyseven/biddingservice:latest
+    hostname: biddingservice
     ports:
       - "3020:3020"
     networks:
@@ -94,6 +98,7 @@ services:
   lotservice:
     platform: linux/amd64
     image: thyseven/lotservice:dev
+    hostname: lotservice
     ports:
      - "3025:3025"
     environment:
@@ -108,7 +113,7 @@ services:
       - InvoiceServiceEndpoint=invoiceservice:3005
       - BiddingServiceEndpoint=biddingservice:3020
       - NginxEndpoint=nginx:3001
-      - PublicIP=http://localhost:3025
+      - PublicIP=https://gronogolsen.dk
       - ASPNETCORE_URLS=http://+:3025
     restart: unless-stopped
     deploy:
@@ -127,7 +132,7 @@ services:
       - biddingservice
       - lotservice
       ports:
-      - "3001:3001"
+      - "2999:3001"
       networks:
       - default
       restart: unless-stopped
