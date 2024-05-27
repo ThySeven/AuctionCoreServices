@@ -44,6 +44,7 @@ services:
       - GrafanaHostname=mailservice
       - RabbitMQQueueName=MailQueue
       - ASPNETCORE_URLS=http://+:3010
+      - PUBLIC_IP=https://api.gronogolsen.dk
     restart: unless-stopped
     deploy:
       restart_policy:
@@ -68,6 +69,7 @@ services:
       - GrafanaHostname=userservice
       - RabbitMQQueueName=MailQueue
       - ASPNETCORE_URLS=http://+:3015
+      - PUBLIC_IP=https://api.gronogolsen.dk
     restart: unless-stopped
     deploy:
       restart_policy:
@@ -93,6 +95,7 @@ services:
       - RabbitMQQueueName=MailQueue
       - BiddingQueueName=BiddingQueue
       - ASPNETCORE_URLS=http://+:3020
+      - PUBLIC_IP=https://api.gronogolsen.dk
     restart: unless-stopped
     deploy:
       restart_policy:
