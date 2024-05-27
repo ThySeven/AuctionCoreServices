@@ -113,7 +113,7 @@ services:
       - InvoiceServiceEndpoint=invoiceservice:3005
       - BiddingServiceEndpoint=biddingservice:3020
       - NginxEndpoint=nginx:3001
-      - PublicIP=https://gronogolsen.dk
+      - PublicIP=https://api.gronogolsen.dk
       - ASPNETCORE_URLS=http://+:3025
     restart: unless-stopped
     deploy:
