@@ -2,7 +2,7 @@ version: "3.8"
 services:
   invoiceservice:
     platform: linux/amd64
-    image: thyseven/invoiceservice:dev
+    image: thyseven/invoiceservice:latest
     hostname: invoiceservice
     container_name: invoiceservice
     ports:
@@ -28,7 +28,7 @@ services:
 
   mailservice:
     platform: linux/amd64
-    image: thyseven/mailservice:dev
+    image: thyseven/mailservice:latest
     hostname: mailservice
     container_name: mailservice
     ports:
@@ -53,7 +53,7 @@ services:
 
   userservice:
     platform: linux/amd64
-    image: thyseven/userservice:dev
+    image: thyseven/userservice:latest
     hostname: userservice
     container_name: userservice
     ports:
@@ -104,7 +104,7 @@ services:
 
   lotservice:
     platform: linux/amd64
-    image: thyseven/lotservice:dev
+    image: thyseven/lotservice:latest
     hostname: lotservice
     container_name: lotservice
     ports:
