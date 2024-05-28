@@ -1,384 +1,383 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "InvoiceService",
-      "version": "1.0"
-    },
-    "paths": {
-      "/Invoice/create": {
-        "post": {
-          "tags": [
-            "Invoice"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/getById/{id}": {
-        "get": {
-          "tags": [
-            "Invoice"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
+  "openapi": "3.0.1",
+  "info": {
+    "title": "InvoiceService",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Invoice/create": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/InvoiceModel"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/getAll": {
-        "get": {
-          "tags": [
-            "Invoice"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/validate/{id}": {
-        "get": {
-          "tags": [
-            "Invoice"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
+            },
+            "text/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/InvoiceModel"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/send": {
-        "post": {
-          "tags": [
-            "Invoice"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/update": {
-        "put": {
-          "tags": [
-            "Invoice"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/InvoiceModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/delete/{id}": {
-        "delete": {
-          "tags": [
-            "Invoice"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
+            },
+            "application/*+json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/InvoiceModel"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
             }
           }
-        }
-      },
-      "/Invoice/createPaymentLink": {
-        "post": {
-          "tags": [
-            "Invoice"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/PaymentModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/PaymentModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/PaymentModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/createParcelInfo": {
-        "post": {
-          "tags": [
-            "Invoice"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/ParcelModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/ParcelModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/ParcelModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Invoice/dummyparcelurl/{parcelurl}": {
-        "get": {
-          "tags": [
-            "Invoice"
-          ],
-          "parameters": [
-            {
-              "name": "parcelurl",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "InvoiceModel": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "nullable": true
-            },
-            "paidStatus": {
-              "type": "boolean"
-            },
-            "price": {
-              "type": "number",
-              "format": "double"
-            },
-            "description": {
-              "type": "string",
-              "nullable": true
-            },
-            "address": {
-              "type": "string",
-              "nullable": true
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            },
-            "createdAt": {
-              "type": "string",
-              "format": "date-time",
-              "readOnly": true
+    "/Invoice/getById/{id}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "additionalProperties": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/getAll": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/validate/{id}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/send": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceModel"
+              }
+            }
+          }
         },
-        "ParcelModel": {
-          "type": "object",
-          "properties": {
-            "weight": {
-              "type": "number",
-              "format": "double"
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/update": {
+      "put": {
+        "tags": [
+          "Invoice"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceModel"
+              }
             },
-            "reference": {
-              "type": "string",
-              "nullable": true
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceModel"
+              }
             },
-            "comment": {
-              "type": "string",
-              "nullable": true
-            },
-            "cashservice": {
-              "type": "number",
-              "format": "double"
-            },
-            "addOnLiabilityService": {
-              "type": "number",
-              "format": "double"
-            },
-            "weightCategory": {
-              "type": "string",
-              "nullable": true
-            },
-            "height": {
-              "type": "number",
-              "format": "double"
-            },
-            "width": {
-              "type": "number",
-              "format": "double"
-            },
-            "length": {
-              "type": "number",
-              "format": "double"
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceModel"
+              }
             }
-          },
-          "additionalProperties": false
+          }
         },
-        "PaymentModel": {
-          "type": "object",
-          "properties": {
-            "price": {
-              "type": "number",
-              "format": "double",
-              "nullable": true
-            },
-            "currencyCode": {
-              "type": "string",
-              "nullable": true
-            },
-            "invoiceNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "reference": {
-              "type": "string",
-              "nullable": true
-            },
-            "invoiceDate": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "note": {
-              "type": "string",
-              "nullable": true
-            },
-            "term": {
-              "type": "string",
-              "nullable": true
-            },
-            "memo": {
-              "type": "string",
-              "nullable": true
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "additionalProperties": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/createPaymentLink": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/createParcelInfo": {
+      "post": {
+        "tags": [
+          "Invoice"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Invoice/dummyparcelurl/{parcelurl}": {
+      "get": {
+        "tags": [
+          "Invoice"
+        ],
+        "parameters": [
+          {
+            "name": "parcelurl",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "InvoiceModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "paidStatus": {
+            "type": "boolean"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelModel": {
+        "type": "object",
+        "properties": {
+          "weight": {
+            "type": "number",
+            "format": "double"
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "cashservice": {
+            "type": "number",
+            "format": "double"
+          },
+          "addOnLiabilityService": {
+            "type": "number",
+            "format": "double"
+          },
+          "weightCategory": {
+            "type": "string",
+            "nullable": true
+          },
+          "height": {
+            "type": "number",
+            "format": "double"
+          },
+          "width": {
+            "type": "number",
+            "format": "double"
+          },
+          "length": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentModel": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "currencyCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoiceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "nullable": true
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "term": {
+            "type": "string",
+            "nullable": true
+          },
+          "memo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
   }
-  
+}

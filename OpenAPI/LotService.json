@@ -1,302 +1,301 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "LotService",
-      "version": "1.0"
-    },
-    "paths": {
-      "/Lot": {
-        "post": {
-          "tags": [
-            "Lot"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LotModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LotModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LotModel.json"
-                }
+  "openapi": "3.0.1",
+  "info": {
+    "title": "LotService",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Lot": {
+      "post": {
+        "tags": [
+          "Lot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LotModel"
               }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LotModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LotModel"
+              }
             }
           }
         },
-        "get": {
-          "tags": [
-            "Lot"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Lot"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Lot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LotModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LotModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LotModel"
+              }
             }
           }
         },
-        "put": {
-          "tags": [
-            "Lot"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LotModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LotModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LotModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Lot/{lotId}": {
-        "delete": {
-          "tags": [
-            "Lot"
-          ],
-          "parameters": [
-            {
-              "name": "lotId",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        },
-        "get": {
-          "tags": [
-            "Lot"
-          ],
-          "parameters": [
-            {
-              "name": "lotId",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Lot/bid": {
-        "put": {
-          "tags": [
-            "Lot"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/Lot/close": {
-        "put": {
-          "tags": [
-            "Lot"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/legal/auctions": {
-        "get": {
-          "tags": [
-            "Lot"
-          ],
-          "parameters": [
-            {
-              "name": "startDate",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "date-time"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/legal/auctions/{auctionId}": {
-        "get": {
-          "tags": [
-            "Lot"
-          ],
-          "parameters": [
-            {
-              "name": "auctionId",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "BidModel": {
-          "type": "object",
-          "properties": {
-            "amount": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "bidderId": {
-              "type": "string",
-              "nullable": true
-            },
-            "lotId": {
-              "type": "string",
-              "nullable": true
-            },
-            "timestamp": {
-              "type": "string",
-              "format": "date-time"
+    "/Lot/{lotId}": {
+      "delete": {
+        "tags": [
+          "Lot"
+        ],
+        "parameters": [
+          {
+            "name": "lotId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "additionalProperties": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Lot"
+        ],
+        "parameters": [
+          {
+            "name": "lotId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Lot/bid": {
+      "put": {
+        "tags": [
+          "Lot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BidModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BidModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BidModel"
+              }
+            }
+          }
         },
-        "LotModel": {
-          "type": "object",
-          "properties": {
-            "lotId": {
-              "type": "string",
-              "nullable": true
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Lot/close": {
+      "put": {
+        "tags": [
+          "Lot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
             },
-            "bids": {
-              "type": "array",
-              "items": {
-                "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
-              },
-              "nullable": true
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
             },
-            "lotName": {
-              "type": "string",
-              "nullable": true
-            },
-            "location": {
-              "type": "string",
-              "nullable": true
-            },
-            "onlineAuction": {
-              "type": "boolean"
-            },
-            "startingPrice": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "minimumBid": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "lotCreationTime": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "open": {
-              "type": "boolean"
-            },
-            "lotEndTime": {
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/legal/auctions": {
+      "get": {
+        "tags": [
+          "Lot"
+        ],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
               "type": "string",
               "format": "date-time"
             }
-          },
-          "additionalProperties": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/legal/auctions/{auctionId}": {
+      "get": {
+        "tags": [
+          "Lot"
+        ],
+        "parameters": [
+          {
+            "name": "auctionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "BidModel": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bidderId": {
+            "type": "string",
+            "nullable": true
+          },
+          "lotId": {
+            "type": "string",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LotModel": {
+        "type": "object",
+        "properties": {
+          "lotId": {
+            "type": "string",
+            "nullable": true
+          },
+          "bids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BidModel"
+            },
+            "nullable": true
+          },
+          "lotName": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "onlineAuction": {
+            "type": "boolean"
+          },
+          "startingPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minimumBid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lotCreationTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "open": {
+            "type": "boolean"
+          },
+          "lotEndTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
   }
-  
+}

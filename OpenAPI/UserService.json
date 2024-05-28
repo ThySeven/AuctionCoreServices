@@ -1,378 +1,377 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "UserService",
-      "version": "1.0"
-    },
-    "paths": {
-      "/User/{id}": {
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UserService",
+    "version": "1.0"
+  },
+  "paths": {
+    "/User/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        }
-      },
-      "/User/update": {
-        "put": {
-          "tags": [
-            "User"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/UserModel.jsonDTO"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/UserModel.jsonDTO"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/UserModel.jsonDTO"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/User/updatepassword": {
-        "put": {
-          "tags": [
-            "User"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/PasswordUpdateRecord.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/PasswordUpdateRecord.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/PasswordUpdateRecord.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/User/create": {
-        "post": {
-          "tags": [
-            "User"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/UserModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/UserModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/UserModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/User/delete/{id}": {
-        "delete": {
-          "tags": [
-            "User"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/User/login": {
-        "post": {
-          "tags": [
-            "User"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/User/verify/{id}": {
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/legal/users/{userId}": {
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "parameters": [
-            {
-              "name": "userId",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/legal/login": {
-        "post": {
-          "tags": [
-            "User"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "LoginModel": {
-          "type": "object",
-          "properties": {
-            "username": {
-              "type": "string",
-              "nullable": true
+    "/User/update": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModelDTO"
+              }
             },
-            "password": {
-              "type": "string",
-              "nullable": true
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModelDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModelDTO"
+              }
             }
-          },
-          "additionalProperties": false
+          }
         },
-        "PasswordUpdateRecord": {
-          "type": "object",
-          "properties": {
-            "loginModel": {
-              "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/LoginModel.json"
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/User/updatepassword": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordUpdateRecord"
+              }
             },
-            "newPassword": {
-              "type": "string",
-              "nullable": true
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordUpdateRecord"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PasswordUpdateRecord"
+              }
             }
-          },
-          "additionalProperties": false
+          }
         },
-        "UserModel": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "nullable": true
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/User/create": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
             },
-            "firstName": {
-              "type": "string",
-              "nullable": true
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
             },
-            "lastName": {
-              "type": "string",
-              "nullable": true
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            },
-            "username": {
-              "type": "string",
-              "nullable": true
-            },
-            "password": {
-              "type": "string",
-              "nullable": true
-            },
-            "salt": {
-              "type": "string",
-              "nullable": true
-            },
-            "address": {
-              "type": "string",
-              "nullable": true
-            },
-            "phoneNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "registrationDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            },
-            "verified": {
-              "type": "boolean"
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
             }
-          },
-          "additionalProperties": false
+          }
         },
-        "UserModelDTO": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "nullable": true
-            },
-            "firstName": {
-              "type": "string",
-              "nullable": true
-            },
-            "lastName": {
-              "type": "string",
-              "nullable": true
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            },
-            "username": {
-              "type": "string",
-              "nullable": true
-            },
-            "address": {
-              "type": "string",
-              "nullable": true
-            },
-            "phoneNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "authToken": {
-              "type": "string",
-              "nullable": true
-            },
-            "registrationDate": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/User/delete/{id}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "additionalProperties": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/User/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/User/verify/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/legal/users/{userId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/legal/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "LoginModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PasswordUpdateRecord": {
+        "type": "object",
+        "properties": {
+          "loginModel": {
+            "$ref": "#/components/schemas/LoginModel"
+          },
+          "newPassword": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "salt": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "registrationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserModelDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "authToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "registrationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
   }
-  
+}
