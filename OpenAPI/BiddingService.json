@@ -1,0 +1,194 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "BiddingService",
+      "version": "1.0"
+    },
+    "paths": {
+      "/api/Bidding": {
+        "post": {
+          "tags": [
+            "Bidding"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/BidModel.json"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Bidding/lot/{id}": {
+        "get": {
+          "tags": [
+            "Bidding"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Notification": {
+        "post": {
+          "tags": [
+            "Notification"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/NotificationModel.json"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/NotificationModel.json"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "https://raw.githubusercontent.com/ThySeven/AuctionCoreServices/main/Schema/NotificationModel.json"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Bid": {
+          "type": "object",
+          "properties": {
+            "lotId": {
+              "type": "string",
+              "nullable": true
+            },
+            "amount": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "bidderId": {
+              "type": "string",
+              "nullable": true
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "DateOnly": {
+          "type": "object",
+          "properties": {
+            "year": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "month": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "day": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "dayOfWeek": {
+              "$ref": "#/components/schemas/DayOfWeek"
+            },
+            "dayOfYear": {
+              "type": "integer",
+              "format": "int32",
+              "readOnly": true
+            },
+            "dayNumber": {
+              "type": "integer",
+              "format": "int32",
+              "readOnly": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DayOfWeek": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "Notification": {
+          "type": "object",
+          "properties": {
+            "lotId": {
+              "type": "string",
+              "nullable": true
+            },
+            "receiverMail": {
+              "type": "string",
+              "nullable": true
+            },
+            "timeStamp": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lotName": {
+              "type": "string",
+              "nullable": true
+            },
+            "newLotPrice": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "newBidLink": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+  
