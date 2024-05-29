@@ -7,6 +7,14 @@ services:
     - "3030:80"
     networks:
       - default
+  gronogolsenui:
+    platform: linux/amd64
+    image: thyseven/gronogolsenui:latest
+    ports:
+      - "9987:5000"
+    networks:
+      - default
+
 
 networks:
   default:
